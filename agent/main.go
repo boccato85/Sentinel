@@ -170,7 +170,7 @@ func loadRuntimeConfig() runtimeConfig {
 		AuthEnabled: getEnv("AUTH_ENABLED", "true") == "true",
 		AuthToken:   getEnv("AUTH_TOKEN", ""),
 
-		ListenAddr: getEnv("LISTEN_ADDR", "127.0.0.1:8080"),
+		ListenAddr: getEnv("LISTEN_ADDR", "0.0.0.0:8080"),
 		RateLimit:  getEnvInt("RATE_LIMIT_RPS", 100),
 	}
 

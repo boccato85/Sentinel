@@ -4,6 +4,7 @@ import (
 	"context"
 	"fmt"
 	"log/slog"
+	"os"
 	"path/filepath"
 	"time"
 
@@ -28,8 +29,12 @@ func InitClients() error {
 	k8sCfg, err := rest.InClusterConfig()
 	if err != nil {
 		slog.Info("not running in cluster, trying local kubeconfig", "component", "k8s")
-		home := homedir.HomeDir()
-		k8sCfg, err = clientcmd.BuildConfigFromFlags("", filepath.Join(home, ".kube", "config"))
+		kubeconfigPath := os.Getenv("KUBECONFIG")
+		if kubeconfigPath == "" {
+			home := homedir.HomeDir()
+			kubeconfigPath = filepath.Join(home, ".kube", "config")
+		}
+		k8sCfg, err = clientcmd.BuildConfigFromFlags("", kubeconfigPath)
 		if err != nil {
 			return fmt.Errorf("failed to load kubeconfig: %w", err)
 		}

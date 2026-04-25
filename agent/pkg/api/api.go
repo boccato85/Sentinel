@@ -1,6 +1,7 @@
 package api
 
 import (
+	"crypto/subtle"
 	"encoding/json"
 	"io/fs"
 	"log/slog"
@@ -168,7 +169,7 @@ func (a *API) AuthMiddleware(next http.Handler) http.Handler {
 			writeJSONError(w, http.StatusUnauthorized, "missing authorization header")
 			return
 		}
-		if authHeader != "Bearer "+a.AuthToken {
+		if subtle.ConstantTimeCompare([]byte(authHeader), []byte("Bearer "+a.AuthToken)) != 1 {
 			writeJSONError(w, http.StatusUnauthorized, "invalid token")
 			return
 		}
