@@ -3,11 +3,9 @@
 > **This repository is archived.**  
 > Sentinel served as a proof-of-concept for Kubernetes SRE/FinOps observability — collection, deterministic incident detection, waste analysis, and a real-time dashboard.  
 >  
-> The collector, store, deterministic engine, and dashboard **live on inside [AlfGuard](https://github.com/boccato85/alfguard)**, the commercial product that adds AI-powered root-cause analysis, real cloud billing correlation (AWS Cost Explorer), and guided investigation workflows.  
+> The collector, store, deterministic engine, and dashboard live on inside a commercial product that adds AI-powered root-cause analysis, real cloud billing correlation, and guided investigation workflows.  
 >  
-> **This repo remains public, read-only, as a reference and historical artifact.** No further updates, issues, or PRs will be accepted here.  
->  
-> → **[AlfGuard](https://github.com/boccato85/alfguard)** for the active product.
+> **This repo remains public, read-only, as a reference and historical artifact.** No further updates, issues, or PRs will be accepted here.
 
 ---
 
